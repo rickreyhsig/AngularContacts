@@ -1,4 +1,4 @@
-var express    = require('express'),
+/*var express    = require('express'),
     Bourne     = require('bourne'),
     bodyParser = require('body-parser'),
 
@@ -47,10 +47,10 @@ router
             });
         });
 
-module.exports = router;
+module.exports = router;*/
 
 
-/*var express    = require('express'),
+var express    = require('express'),
     Bourne     = require('bourne'),
     bodyParser = require('body-parser'),
 
@@ -83,5 +83,24 @@ router
         req.dbQuery = { id: parseInt(req.params.id, 10) };
         next();
     })
-    .route('/contact/:id')*/
+    .route('/contact/:id')
+ .get(function (req, res) {
+        db.findOne(req.dbQuery, function (err, data) {
+                res.json(data);    
+            });
+        })
+        .put(function (req, res) {
+            var contact = req.body;
+            delete contact.$promise;
+            delete contact.$resolved;
+            db.update(req.dbQuery, contact, function (err, data) {
+                res.json(data[0]);
+            });
+        })
+        .delete(function (req, res) {
+            db.delete(req.dbQuery, function () {
+                res.json(null);
+            });
+        });
 
+module.exports = router;
