@@ -36,7 +36,7 @@ angular.module('ContactsApp', [])
     })*/
 
 
-angular.module('ContactsApp', ['ngRoute', 'ngResource'])
+angular.module('ContactsApp', ['ngRoute', 'ngResource', 'ngMessages'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/contacts', {
