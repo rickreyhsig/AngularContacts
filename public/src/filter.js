@@ -1,8 +1,8 @@
 angular.module('ContactsApp')
     .filter('labelCase', function () {
         return function (input) {
-            input = input.replace(/([A-Z])/g, ' $1'); // Replaces A-Z with second parameter
-            return input[0].toUpperCase() + input.slice(1); // Capitalize first letter and concatenate to the string except the first letter
+            input = input.replace(/([A-Z])/g, ' $1'); 
+            return input[0].toUpperCase() + input.slice(1);
         };
     })
     .filter('camelCase', function () {

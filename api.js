@@ -84,8 +84,8 @@ router
         next();
     })
     .route('/contact/:id')
- .get(function (req, res) {
-        db.findOne(req.dbQuery, function (err, data) {
+        .get(function (req, res) {
+            db.findOne(req.dbQuery, function (err, data) {
                 res.json(data);    
             });
         })

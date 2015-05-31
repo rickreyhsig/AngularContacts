@@ -47,5 +47,10 @@ angular.module('ContactsApp', ['ngRoute', 'ngResource', 'ngMessages'])
                 controller: 'NewController',
                 templateUrl: 'views/new.html'
             })
+            .when('/contact/:id', {
+                controller: 'SingleController',
+                templateUrl: 'views/single.html'
+            })
+            
         $locationProvider.html5Mode(true);
     });

@@ -86,7 +86,7 @@ angular.module('ContactsApp')
             $location.url('/contact/' + id);
         };
     })
-    .controller('NewController', function ($scope, $rootScope, Contact, $location) {
+    .controller('NewController', function ($scope, Contact, $location) {
         //$rootScope.PAGE = "new";
         $scope.contact = new Contact({
             firstName: ['', 'text'],
@@ -106,5 +106,13 @@ angular.module('ContactsApp')
                 $scope.contact.$save();
                 $location.url('/contacts');
             }
+        };
+    })
+    .controller('SingleController', function ($scope, $rootScope, $location, Contact, $routeParams) {
+        $rootScope.PAGE = "single";
+        $scope.contact = Contact.get({ id: parseInt($routeParams.id, 10) }); 
+        $scope.delete = function () {
+            $scope.contact.$delete();
+            $location.url('/contacts');
         };
     })    
