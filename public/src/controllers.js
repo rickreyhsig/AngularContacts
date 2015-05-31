@@ -70,7 +70,8 @@
     });*/
 
 angular.module('ContactsApp')
-    .controller('ListController', function ($scope, Contact, $location) {
+    .controller('ListController', function ($scope, $rootScope, Contact, $location) {
+        $rootScope.PAGE = "all";
         $scope.contacts = Contact.query();
         $scope.fields = ['firstName', 'lastName'];
 
@@ -80,14 +81,14 @@ angular.module('ContactsApp')
         };
 
         $scope.sort.field = 'firstName';
-        $scope.sort.order = false; // Sort in descending order
+        $scope.sort.order = false;
 
         $scope.show = function (id) {
             $location.url('/contact/' + id);
         };
     })
-    .controller('NewController', function ($scope, Contact, $location) {
-        //$rootScope.PAGE = "new";
+    .controller('NewController', function ($scope, $rootScope, Contact, $location) {
+        $rootScope.PAGE = "new";
         $scope.contact = new Contact({
             firstName: ['', 'text'],
             lastName:  ['', 'text'],
