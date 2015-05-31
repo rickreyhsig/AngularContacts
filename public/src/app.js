@@ -29,13 +29,6 @@
         });
     });*/
 
-/*-------
-angular.module('ContactsApp', [])
-    .run(function($rootScope) {
-        $rootScope.message = "Hello Angular!";
-    })*/
-
-
 angular.module('ContactsApp', ['ngRoute', 'ngResource', 'ngMessages'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -51,6 +44,9 @@ angular.module('ContactsApp', ['ngRoute', 'ngResource', 'ngMessages'])
                 controller: 'SingleController',
                 templateUrl: 'views/single.html'
             })
-            
+            .otherwise({
+                redirectTo: '/contacts'   
+            });
+
         $locationProvider.html5Mode(true);
     });
